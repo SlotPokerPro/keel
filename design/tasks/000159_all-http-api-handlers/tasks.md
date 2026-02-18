@@ -3,11 +3,11 @@
 ## Setup
 
 - [x] Add `update_openapi` target to `Makefile` that installs swag and runs `swag init`
-- [~] Add general API info annotations to `cmd/keel/main.go` (@title, @version, @description, @host, @BasePath)
+- [x] Add general API info annotations to `cmd/keel/main.go` (@title, @version, @description, @host, @BasePath)
 
 ## Core Endpoints
 
-- [ ] Add Swaggo annotations to `healthHandler` in `pkg/http/http.go`
+- [~] Add Swaggo annotations to `healthHandler` in `pkg/http/http.go`
 - [ ] Add Swaggo annotations to `versionHandler` in `pkg/http/http.go`
 - [ ] Add Swaggo annotations to `userInfoHandler` in `pkg/http/http.go`
 
