@@ -2,7 +2,7 @@
 
 ## Setup
 
-- [ ] Add `update_openapi` target to `Makefile` that installs swag and runs `swag init`
+- [~] Add `update_openapi` target to `Makefile` that installs swag and runs `swag init`
 - [ ] Add general API info annotations to `cmd/keel/main.go` (@title, @version, @description, @host, @BasePath)
 
 ## Core Endpoints
