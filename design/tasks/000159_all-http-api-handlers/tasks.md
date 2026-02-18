@@ -19,13 +19,13 @@
 
 ## Approvals Endpoints (`pkg/http/approvals_endpoint.go`)
 
-- [~] Add annotations to `approvalsHandler` (GET /v1/approvals)
-- [ ] Add annotations to `approvalSetHandler` (PUT /v1/approvals)
-- [ ] Add annotations to `approvalApproveHandler` (POST /v1/approvals)
+- [x] Add annotations to `approvalsHandler` (GET /v1/approvals)
+- [x] Add annotations to `approvalSetHandler` (PUT /v1/approvals)
+- [x] Add annotations to `approvalApproveHandler` (POST /v1/approvals)
 
 ## Other Admin Endpoints
 
-- [ ] Add annotations to `resourcesHandler` in `pkg/http/resources_endpoint.go`
+- [~] Add annotations to `resourcesHandler` in `pkg/http/resources_endpoint.go`
 - [ ] Add annotations to `policyUpdateHandler` in `pkg/http/policy_endpoint.go`
 - [ ] Add annotations to `trackedHandler` in `pkg/http/tracked_endpoint.go`
 - [ ] Add annotations to `trackSetHandler` in `pkg/http/tracked_endpoint.go`
