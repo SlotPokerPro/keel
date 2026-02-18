@@ -13,13 +13,13 @@
 
 ## Auth Endpoints (`pkg/http/auth.go`)
 
-- [~] Add annotations to `loginHandler`
-- [ ] Add annotations to `logoutHandler`
-- [ ] Add annotations to `refreshHandler`
+- [x] Add annotations to `loginHandler`
+- [x] Add annotations to `logoutHandler`
+- [x] Add annotations to `refreshHandler`
 
 ## Approvals Endpoints (`pkg/http/approvals_endpoint.go`)
 
-- [ ] Add annotations to `approvalsHandler` (GET /v1/approvals)
+- [~] Add annotations to `approvalsHandler` (GET /v1/approvals)
 - [ ] Add annotations to `approvalSetHandler` (PUT /v1/approvals)
 - [ ] Add annotations to `approvalApproveHandler` (POST /v1/approvals)
 
