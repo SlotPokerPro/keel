@@ -99,3 +99,39 @@ update_openapi:
 - Uses gorilla/mux router (standard net/http handlers)
 - Some endpoints require authentication (noted in annotations)
 - Webhooks can optionally require authentication based on `authenticatedWebhooks` flag
+
+## Implementation Notes
+
+### Gotchas Discovered
+
+1. **Type References**: Swaggo requires fully qualified type paths. Initially used `version.Version` which failed - the correct type is `types.VersionInfo` from `github.com/keel-hq/keel/types/version_info.go`.
+
+2. **swag CLI Installation**: After `go install`, the `swag` binary is placed in `$(go env GOPATH)/bin`. The Makefile uses `go install` which works if GOPATH/bin is in PATH.
+
+3. **Package Warning**: Swag shows a warning about "no Go files in /home/.../keel" because the root directory has no .go files - this is expected and doesn't affect generation.
+
+### Endpoints Generated
+
+Successfully generated OpenAPI spec with 21 endpoints:
+- `/healthz` - Health check
+- `/version` - Version info
+- `/v1/approvals` - GET, PUT, POST
+- `/v1/audit` - Audit logs
+- `/v1/auth/info`, `/v1/auth/user` - User info
+- `/v1/auth/login`, `/v1/auth/logout`, `/v1/auth/refresh` - Auth
+- `/v1/policies` - Policy management
+- `/v1/resources` - Resource listing
+- `/v1/stats` - Statistics
+- `/v1/tracked` - GET, PUT for tracked images
+- `/v1/webhooks/*` - 8 webhook endpoints (native, dockerhub, github, harbor, jfrog, quay, azure, registry)
+
+### Added Types for Documentation
+
+Added `loginResponse` struct in `auth.go` to properly document the authentication response format.
+
+### Generated Files
+
+The `docs/` directory is committed to the repository containing:
+- `docs.go` - Go code for embedding swagger spec
+- `swagger.json` - OpenAPI 2.0 spec in JSON
+- `swagger.yaml` - OpenAPI 2.0 spec in YAML
