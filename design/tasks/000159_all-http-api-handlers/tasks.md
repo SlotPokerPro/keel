@@ -7,13 +7,13 @@
 
 ## Core Endpoints
 
-- [~] Add Swaggo annotations to `healthHandler` in `pkg/http/http.go`
-- [ ] Add Swaggo annotations to `versionHandler` in `pkg/http/http.go`
-- [ ] Add Swaggo annotations to `userInfoHandler` in `pkg/http/http.go`
+- [x] Add Swaggo annotations to `healthHandler` in `pkg/http/http.go`
+- [x] Add Swaggo annotations to `versionHandler` in `pkg/http/http.go`
+- [x] Add Swaggo annotations to `userInfoHandler` in `pkg/http/http.go`
 
 ## Auth Endpoints (`pkg/http/auth.go`)
 
-- [ ] Add annotations to `loginHandler`
+- [~] Add annotations to `loginHandler`
 - [ ] Add annotations to `logoutHandler`
 - [ ] Add annotations to `refreshHandler`
 
