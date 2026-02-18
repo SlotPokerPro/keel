@@ -25,16 +25,16 @@
 
 ## Other Admin Endpoints
 
-- [~] Add annotations to `resourcesHandler` in `pkg/http/resources_endpoint.go`
-- [ ] Add annotations to `policyUpdateHandler` in `pkg/http/policy_endpoint.go`
-- [ ] Add annotations to `trackedHandler` in `pkg/http/tracked_endpoint.go`
-- [ ] Add annotations to `trackSetHandler` in `pkg/http/tracked_endpoint.go`
-- [ ] Add annotations to `adminAuditLogHandler` in `pkg/http/audit_endpoint.go`
-- [ ] Add annotations to `statsHandler` in `pkg/http/stats_endpoint.go`
+- [x] Add annotations to `resourcesHandler` in `pkg/http/resources_endpoint.go`
+- [x] Add annotations to `policyUpdateHandler` in `pkg/http/policy_endpoint.go`
+- [x] Add annotations to `trackedHandler` in `pkg/http/tracked_endpoint.go`
+- [x] Add annotations to `trackSetHandler` in `pkg/http/tracked_endpoint.go`
+- [x] Add annotations to `adminAuditLogHandler` in `pkg/http/audit_endpoint.go`
+- [x] Add annotations to `statsHandler` in `pkg/http/stats_endpoint.go`
 
 ## Webhook Endpoints
 
-- [ ] Add annotations to `nativeHandler` in `pkg/http/native_webhook_trigger.go`
+- [~] Add annotations to `nativeHandler` in `pkg/http/native_webhook_trigger.go`
 - [ ] Add annotations to `dockerHubHandler` in `pkg/http/dockerhub_webhook_trigger.go`
 - [ ] Add annotations to `jfrogHandler` in `pkg/http/jfrog_webhook_trigger.go`
 - [ ] Add annotations to `quayHandler` in `pkg/http/quay_webhook_trigger.go`
