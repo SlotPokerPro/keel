@@ -1,9 +1,9 @@
 # Implementation Tasks
 
 ## Script Setup
-- [ ] Create `keel/scripts/` directory if it doesn't exist
-- [ ] Create `keel/scripts/start-local-cluster.sh` script file
-- [ ] Make script executable (`chmod +x`)
+- [~] Create `keel/scripts/` directory if it doesn't exist
+- [~] Create `keel/scripts/start-local-cluster.sh` script file
+- [~] Make script executable (`chmod +x`)
 
 ## Script Implementation
 - [ ] Add shebang and error handling (`set -euo pipefail`)
