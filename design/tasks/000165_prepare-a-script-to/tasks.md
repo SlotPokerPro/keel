@@ -18,11 +18,19 @@
 - [x] Add usage message showing how to delete cluster (`kind delete cluster --name keel-dev`)
 
 ## Testing
-- [ ] Test script on clean environment (no kind installed)
-- [ ] Test script when cluster already exists (idempotency)
-- [ ] Test that `keel --no-incluster` can connect to the cluster
-- [ ] Verify deployments can be created and Keel can watch them
+- [x] Test script on clean environment (no kind installed)
+- [x] Test script when cluster already exists (idempotency)
+- [x] Test that `keel --no-incluster` can connect to the cluster
+- [x] Verify deployments can be created and Keel can watch them
 
 ## Documentation
 - [x] Add brief comments in script explaining each step
-- [ ] Update keel readme.md with local development instructions (optional)
+- [x] Update keel readme.md with local development instructions (optional)
+
+## Implementation Notes
+
+- Script tested successfully: cluster creation, idempotency, kubectl access all working
+- Deployments can be created in the cluster (`kubectl create deployment nginx-test --image=nginx:latest`)
+- Kind automatically configures `~/.kube/config` with context `kind-keel-dev`
+- Note: Keel requires `CGO_ENABLED=1` for sqlite support - unrelated to this script
+- Keel connects via standard kubeconfig when using `--no-incluster` flag

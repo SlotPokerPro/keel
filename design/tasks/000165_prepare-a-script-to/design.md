@@ -98,3 +98,12 @@ export KUBECONFIG=~/.kube/config
 export KUBERNETES_CONTEXT=kind-keel-dev  # Optional, if multiple contexts
 keel --no-incluster
 ```
+
+## Implementation Notes
+
+- **Script tested successfully**: Cluster creation, idempotency, and kubectl access all verified working
+- **kind version**: Script works with kind v0.20.0+ (tested with v0.27.0)
+- **Kubeconfig**: kind automatically merges config into `~/.kube/config` with context `kind-keel-dev`
+- **CGO requirement**: Keel requires `CGO_ENABLED=1` for sqlite support (needs gcc). This is a build requirement, unrelated to this script.
+- **Deployments work**: Verified `kubectl create deployment` works against the cluster
+- **Idempotency confirmed**: Running script multiple times correctly detects existing cluster
