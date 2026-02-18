@@ -45,6 +45,6 @@
 
 ## Verification
 
-- [~] Run `make update_openapi` and verify docs are generated
-- [ ] Verify generated `docs/swagger.json` contains all endpoints
-- [ ] Add `docs/` to `.gitignore` or commit generated files (team decision)
+- [x] Run `make update_openapi` and verify docs are generated
+- [x] Verify generated `docs/swagger.json` contains all endpoints
+- [x] Add `docs/` to `.gitignore` or commit generated files (team decision)
