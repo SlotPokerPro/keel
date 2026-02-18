@@ -19,6 +19,15 @@ type trackedImage struct {
 	Registry     string `json:"registry"`
 }
 
+// trackedHandler godoc
+// @Summary List tracked images
+// @Description Returns a list of all tracked container images with their triggers and policies
+// @Tags tracked
+// @Produce json
+// @Success 200 {array} trackedImage
+// @Failure 500 {string} string "Internal server error"
+// @Security ApiKeyAuth
+// @Router /v1/tracked [get]
 func (s *TriggerServer) trackedHandler(resp http.ResponseWriter, req *http.Request) {
 	trackedImages, err := s.providers.TrackedImages()
 
@@ -46,6 +55,18 @@ type trackRequest struct {
 	Schedule   string `json:"schedule"`
 }
 
+// trackSetHandler godoc
+// @Summary Update tracking settings
+// @Description Updates the trigger type and poll schedule for a tracked resource
+// @Tags tracked
+// @Accept json
+// @Produce json
+// @Param request body trackRequest true "Track settings request"
+// @Success 200 {object} APIResponse
+// @Failure 400 {string} string "Bad request"
+// @Failure 404 {string} string "Resource not found"
+// @Security ApiKeyAuth
+// @Router /v1/tracked [put]
 func (s *TriggerServer) trackSetHandler(resp http.ResponseWriter, req *http.Request) {
 
 	var trackReq trackRequest

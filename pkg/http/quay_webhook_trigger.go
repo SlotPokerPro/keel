@@ -45,6 +45,16 @@ type quayWebhook struct {
 	UpdatedTags []string `json:"updated_tags"`
 }
 
+// quayHandler godoc
+// @Summary Trigger Quay webhook
+// @Description Receives and processes Quay.io webhook notifications for image push events
+// @Tags webhooks
+// @Accept json
+// @Produce plain
+// @Param payload body quayWebhook true "Quay webhook payload"
+// @Success 200 {string} string "OK"
+// @Failure 400 {string} string "Bad request"
+// @Router /v1/webhooks/quay [post]
 func (s *TriggerServer) quayHandler(resp http.ResponseWriter, req *http.Request) {
 	qw := quayWebhook{}
 	if err := json.NewDecoder(req.Body).Decode(&qw); err != nil {

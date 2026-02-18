@@ -61,8 +61,8 @@ build:
 
 install:
 	@echo "++ Installing keel"
-	# CGO_ENABLED=0 GOOS=linux go install -ldflags "$(LDFLAGS)" github.com/keel-hq/keel/cmd/keel	
-	GOOS=linux go install -ldflags "$(LDFLAGS)" github.com/keel-hq/keel/cmd/keel	
+	# CGO_ENABLED=0 GOOS=linux go install -ldflags "$(LDFLAGS)" github.com/keel-hq/keel/cmd/keel
+	GOOS=linux go install -ldflags "$(LDFLAGS)" github.com/keel-hq/keel/cmd/keel
 
 install-debug:
 	@echo "++ Installing keel with debug flags"
@@ -87,7 +87,7 @@ run:
 	keel --no-incluster --ui-dir ui/dist
 
 lint-ui:
-	cd ui && yarn 
+	cd ui && yarn
 	yarn run lint --no-fix && yarn run build
 
 run-ui:
@@ -99,3 +99,8 @@ build-ui:
 
 run-debug: install
 	DEBUG=true keel --no-incluster
+
+update_openapi:
+	@echo "++ Generating OpenAPI spec"
+	go install github.com/swaggo/swag/cmd/swag@latest
+	swag init -g cmd/keel/main.go -o docs

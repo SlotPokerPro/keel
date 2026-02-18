@@ -68,6 +68,16 @@ type harborWebhook struct {
 	} `json:"event_data"`
 }
 
+// harborHandler godoc
+// @Summary Trigger Harbor webhook
+// @Description Receives and processes Harbor registry webhook notifications for image push events
+// @Tags webhooks
+// @Accept json
+// @Produce plain
+// @Param payload body harborWebhook true "Harbor webhook payload"
+// @Success 200 {string} string "OK"
+// @Failure 400 {string} string "Bad request"
+// @Router /v1/webhooks/harbor [post]
 func (s *TriggerServer) harborHandler(resp http.ResponseWriter, req *http.Request) {
 	hn := harborWebhook{}
 	if err := json.NewDecoder(req.Body).Decode(&hn); err != nil {
@@ -81,7 +91,7 @@ func (s *TriggerServer) harborHandler(resp http.ResponseWriter, req *http.Reques
 		"event": hn,
 	}).Debug("harborHandler: received event, looking for a pushImage tag")
 
-	if hn.Type == "pushImage" || hn.Type == "PUSH_ARTIFACT" { 
+	if hn.Type == "pushImage" || hn.Type == "PUSH_ARTIFACT" {
 		// go trough all the ressource items
 		for _, e := range hn.EventData.Resources {
 			imageRepo, err := image.Parse(e.ResourceURL)

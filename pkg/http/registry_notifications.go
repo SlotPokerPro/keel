@@ -88,6 +88,16 @@ type registryNotification struct {
 	} `json:"events"`
 }
 
+// registryNotificationHandler godoc
+// @Summary Trigger Docker Registry notification webhook
+// @Description Receives and processes Docker Registry V2 notification webhooks for image push events. Compatible with Docker Registry, GitLab Container Registry, and Harbor.
+// @Tags webhooks
+// @Accept json
+// @Produce plain
+// @Param payload body registryNotification true "Registry notification payload"
+// @Success 200 {string} string "OK"
+// @Failure 400 {string} string "Bad request"
+// @Router /v1/webhooks/registry [post]
 func (s *TriggerServer) registryNotificationHandler(resp http.ResponseWriter, req *http.Request) {
 	rn := registryNotification{}
 	if err := json.NewDecoder(req.Body).Decode(&rn); err != nil {

@@ -25,6 +25,15 @@ const (
 	actionArchive = "archive"
 )
 
+// approvalsHandler godoc
+// @Summary List approvals
+// @Description Returns a list of all approvals (both active and archived)
+// @Tags approvals
+// @Produce json
+// @Success 200 {array} types.Approval
+// @Failure 500 {string} string "Internal server error"
+// @Security ApiKeyAuth
+// @Router /v1/approvals [get]
 func (s *TriggerServer) approvalsHandler(resp http.ResponseWriter, req *http.Request) {
 
 	// lists all (both archived)
@@ -55,7 +64,18 @@ type resourceApprovalsUpdateRequest struct {
 	VotesRequired int    `json:"votesRequired"`
 }
 
-// approvalSetHandler allows to set/remove approvals for resources
+// approvalSetHandler godoc
+// @Summary Update approval requirements
+// @Description Sets or removes approval requirements for a resource
+// @Tags approvals
+// @Accept json
+// @Produce json
+// @Param request body resourceApprovalsUpdateRequest true "Approval update request"
+// @Success 200 {object} APIResponse
+// @Failure 400 {string} string "Bad request"
+// @Failure 404 {string} string "Resource not found"
+// @Security ApiKeyAuth
+// @Router /v1/approvals [put]
 func (s *TriggerServer) approvalSetHandler(resp http.ResponseWriter, req *http.Request) {
 
 	var approvalUpdateRequest resourceApprovalsUpdateRequest
@@ -110,6 +130,19 @@ func (s *TriggerServer) approvalSetHandler(resp http.ResponseWriter, req *http.R
 	fmt.Fprintf(resp, "resource with identifier '%s' not found", approvalUpdateRequest.Identifier)
 }
 
+// approvalApproveHandler godoc
+// @Summary Approve, reject, delete, or archive an approval
+// @Description Performs an action on an approval (approve, reject, delete, or archive)
+// @Tags approvals
+// @Accept json
+// @Produce json
+// @Param request body approveRequest true "Approval action request"
+// @Success 200 {object} types.Approval
+// @Failure 400 {string} string "Bad request"
+// @Failure 404 {string} string "Approval not found"
+// @Failure 500 {string} string "Internal server error"
+// @Security ApiKeyAuth
+// @Router /v1/approvals [post]
 func (s *TriggerServer) approvalApproveHandler(resp http.ResponseWriter, req *http.Request) {
 
 	var ar approveRequest

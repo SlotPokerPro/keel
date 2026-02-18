@@ -56,6 +56,16 @@ type azureWebhook struct {
 	} `json:"request"`
 }
 
+// azureHandler godoc
+// @Summary Trigger Azure Container Registry webhook
+// @Description Receives and processes Azure Container Registry webhook notifications for image push events
+// @Tags webhooks
+// @Accept json
+// @Produce plain
+// @Param payload body azureWebhook true "Azure webhook payload"
+// @Success 200 {string} string "OK"
+// @Failure 400 {string} string "Bad request"
+// @Router /v1/webhooks/azure [post]
 func (s *TriggerServer) azureHandler(resp http.ResponseWriter, req *http.Request) {
 	aw := azureWebhook{}
 	if err := json.NewDecoder(req.Body).Decode(&aw); err != nil {

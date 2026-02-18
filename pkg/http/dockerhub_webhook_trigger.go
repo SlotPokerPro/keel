@@ -80,7 +80,16 @@ type dockerHubWebhook struct {
 	} `json:"repository"`
 }
 
-// dockerHubHandler - used to react to dockerhub webhooks
+// dockerHubHandler godoc
+// @Summary Trigger DockerHub webhook
+// @Description Receives and processes DockerHub webhook notifications for image push events
+// @Tags webhooks
+// @Accept json
+// @Produce plain
+// @Param payload body dockerHubWebhook true "DockerHub webhook payload"
+// @Success 200 {string} string "OK"
+// @Failure 400 {string} string "Bad request"
+// @Router /v1/webhooks/dockerhub [post]
 func (s *TriggerServer) dockerHubHandler(resp http.ResponseWriter, req *http.Request) {
 	dw := dockerHubWebhook{}
 	if err := json.NewDecoder(req.Body).Decode(&dw); err != nil {

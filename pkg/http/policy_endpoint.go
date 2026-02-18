@@ -14,6 +14,18 @@ type resourcePolicyUpdateRequest struct {
 	Provider   string `json:"provider"`
 }
 
+// policyUpdateHandler godoc
+// @Summary Update resource policy
+// @Description Updates the Keel policy for a specific resource
+// @Tags policies
+// @Accept json
+// @Produce json
+// @Param request body resourcePolicyUpdateRequest true "Policy update request"
+// @Success 200 {object} APIResponse
+// @Failure 400 {string} string "Bad request"
+// @Failure 404 {string} string "Resource not found"
+// @Security ApiKeyAuth
+// @Router /v1/policies [put]
 func (s *TriggerServer) policyUpdateHandler(resp http.ResponseWriter, req *http.Request) {
 	var policyRequest resourcePolicyUpdateRequest
 	dec := json.NewDecoder(req.Body)

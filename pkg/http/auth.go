@@ -87,6 +87,16 @@ func extractToken(req *http.Request) string {
 	return token
 }
 
+// logoutHandler godoc
+// @Summary Logout user
+// @Description Logs out the currently authenticated user
+// @Tags auth
+// @Produce json
+// @Success 200 {object} map[string]interface{}
+// @Failure 401 {string} string "Unauthorized"
+// @Security ApiKeyAuth
+// @Router /v1/auth/logout [post]
+// @Router /v1/auth/logout [get]
 func (s *TriggerServer) logoutHandler(resp http.ResponseWriter, req *http.Request) {
 
 	resp.WriteHeader(200)
@@ -98,6 +108,22 @@ type loginRequest struct {
 	Password string `json:"password"`
 }
 
+// loginResponse represents the authentication response
+type loginResponse struct {
+	Token string `json:"token"`
+}
+
+// loginHandler godoc
+// @Summary Login user
+// @Description Authenticates a user with username and password
+// @Tags auth
+// @Accept json
+// @Produce json
+// @Param credentials body loginRequest true "Login credentials"
+// @Success 200 {object} loginResponse
+// @Failure 400 {string} string "Bad request"
+// @Failure 401 {string} string "Username or password incorrect"
+// @Router /v1/auth/login [post]
 func (s *TriggerServer) loginHandler(resp http.ResponseWriter, req *http.Request) {
 
 	var lr loginRequest
@@ -131,6 +157,16 @@ func (s *TriggerServer) loginHandler(resp http.ResponseWriter, req *http.Request
 	response(authResp, 200, nil, resp, req)
 }
 
+// refreshHandler godoc
+// @Summary Refresh authentication token
+// @Description Generates a new authentication token for the current user
+// @Tags auth
+// @Produce json
+// @Success 200 {object} loginResponse
+// @Failure 401 {string} string "Unauthorized"
+// @Failure 500 {string} string "Internal server error"
+// @Security ApiKeyAuth
+// @Router /v1/auth/refresh [get]
 func (s *TriggerServer) refreshHandler(resp http.ResponseWriter, req *http.Request) {
 	user := auth.GetAccountFromCtx(req.Context())
 

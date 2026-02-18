@@ -22,6 +22,15 @@ type resource struct {
 	Status      k8s.Status        `json:"status"`
 }
 
+// resourcesHandler godoc
+// @Summary List resources
+// @Description Returns a list of all tracked Kubernetes resources with their policies
+// @Tags resources
+// @Produce json
+// @Success 200 {array} resource
+// @Failure 500 {string} string "Internal server error"
+// @Security ApiKeyAuth
+// @Router /v1/resources [get]
 func (s *TriggerServer) resourcesHandler(resp http.ResponseWriter, req *http.Request) {
 
 	vals := s.grc.Values()

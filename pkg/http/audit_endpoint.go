@@ -8,6 +8,19 @@ import (
 	"github.com/keel-hq/keel/types"
 )
 
+// adminAuditLogHandler godoc
+// @Summary Get audit logs
+// @Description Returns paginated audit logs with optional filtering
+// @Tags audit
+// @Produce json
+// @Param limit query int false "Maximum number of results"
+// @Param offset query int false "Offset for pagination"
+// @Param filter query string false "Comma-separated list of resource kinds to filter"
+// @Param email query string false "Filter by email"
+// @Success 200 {object} auditLogsResponse
+// @Failure 500 {string} string "Internal server error"
+// @Security ApiKeyAuth
+// @Router /v1/audit [get]
 func (s *TriggerServer) adminAuditLogHandler(resp http.ResponseWriter, req *http.Request) {
 
 	query := &types.AuditLogQuery{}

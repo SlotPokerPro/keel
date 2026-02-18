@@ -92,6 +92,16 @@ type jfrogWebhook struct {
 	Source          string `json:"source"`
 }
 
+// jfrogHandler godoc
+// @Summary Trigger JFrog webhook
+// @Description Receives and processes JFrog Artifactory webhook notifications for image push events
+// @Tags webhooks
+// @Accept json
+// @Produce plain
+// @Param payload body jfrogWebhook true "JFrog webhook payload"
+// @Success 200 {string} string "OK"
+// @Failure 400 {string} string "Bad request"
+// @Router /v1/webhooks/jfrog [post]
 func (s *TriggerServer) jfrogHandler(resp http.ResponseWriter, req *http.Request) {
 	jw := jfrogWebhook{}
 	if err := json.NewDecoder(req.Body).Decode(&jw); err != nil {

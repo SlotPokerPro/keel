@@ -24,7 +24,16 @@ func init() {
 	prometheus.MustRegister(newNativeWebhooksCounter)
 }
 
-// nativeHandler - used to trigger event directly
+// nativeHandler godoc
+// @Summary Trigger native webhook
+// @Description Triggers a deployment update event directly with repository and tag information
+// @Tags webhooks
+// @Accept json
+// @Produce plain
+// @Param payload body types.Repository true "Repository information with name and tag"
+// @Success 200 {string} string "OK"
+// @Failure 400 {string} string "Bad request"
+// @Router /v1/webhooks/native [post]
 func (s *TriggerServer) nativeHandler(resp http.ResponseWriter, req *http.Request) {
 	repo := types.Repository{}
 	if err := json.NewDecoder(req.Body).Decode(&repo); err != nil {

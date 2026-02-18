@@ -207,10 +207,25 @@ func (s *TriggerServer) registerWebhookRoutes(mux *mux.Router) {
 	}
 }
 
+// healthHandler godoc
+// @Summary Health check endpoint
+// @Description Returns 200 OK if the service is healthy
+// @Tags health
+// @Produce plain
+// @Success 200 {string} string "OK"
+// @Router /healthz [get]
 func (s *TriggerServer) healthHandler(resp http.ResponseWriter, req *http.Request) {
 	resp.WriteHeader(http.StatusOK)
 }
 
+// versionHandler godoc
+// @Summary Get Keel version
+// @Description Returns the current version information of Keel
+// @Tags health
+// @Produce json
+// @Success 200 {object} types.VersionInfo
+// @Failure 500 {string} string "Internal server error"
+// @Router /version [get]
 func (s *TriggerServer) versionHandler(resp http.ResponseWriter, req *http.Request) {
 	v := version.GetKeelVersion()
 
@@ -298,6 +313,16 @@ type UserInfo struct {
 	RoleID        string `json:"role_id"`
 }
 
+// userInfoHandler godoc
+// @Summary Get current user info
+// @Description Returns information about the currently authenticated user
+// @Tags auth
+// @Produce json
+// @Success 200 {object} UserInfo
+// @Failure 401 {string} string "Unauthorized"
+// @Security ApiKeyAuth
+// @Router /v1/auth/info [get]
+// @Router /v1/auth/user [get]
 func (s *TriggerServer) userInfoHandler(resp http.ResponseWriter, req *http.Request) {
 
 	user := auth.GetAccountFromCtx(req.Context())

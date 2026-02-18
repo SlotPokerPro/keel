@@ -1,5 +1,20 @@
 package main
 
+// @title Keel API
+// @version 1.0
+// @description Automated Kubernetes deployment updates. Keel is a tool for automating Kubernetes deployment updates.
+// @termsOfService https://keel.sh/terms/
+
+// @contact.name Keel Support
+// @contact.url https://keel.sh
+// @contact.email support@keel.sh
+
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+
+// @host localhost:9300
+// @BasePath /
+
 import (
 	"os"
 	"os/signal"

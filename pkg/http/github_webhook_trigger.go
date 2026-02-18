@@ -3,11 +3,12 @@ package http
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/keel-hq/keel/types"
-	"github.com/prometheus/client_golang/prometheus"
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/keel-hq/keel/types"
+	"github.com/prometheus/client_golang/prometheus"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -58,7 +59,17 @@ type githubPackageV2Webhook struct {
 	} `json:"package"`
 }
 
-// githubHandler - used to react to github webhooks
+// githubHandler godoc
+// @Summary Trigger GitHub webhook
+// @Description Receives and processes GitHub webhook notifications for container registry events (both GitHub Packages and GitHub Container Registry)
+// @Tags webhooks
+// @Accept json
+// @Produce plain
+// @Param X-GitHub-Event header string true "GitHub event type (package or registry_package)"
+// @Param payload body object true "GitHub webhook payload"
+// @Success 200 {string} string "OK"
+// @Failure 400 {string} string "Bad request"
+// @Router /v1/webhooks/github [post]
 func (s *TriggerServer) githubHandler(resp http.ResponseWriter, req *http.Request) {
 	// GitHub provides different webhook events for each registry.
 	// Github Package uses 'registry_package'
