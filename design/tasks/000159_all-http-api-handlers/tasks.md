@@ -34,17 +34,17 @@
 
 ## Webhook Endpoints
 
-- [~] Add annotations to `nativeHandler` in `pkg/http/native_webhook_trigger.go`
-- [ ] Add annotations to `dockerHubHandler` in `pkg/http/dockerhub_webhook_trigger.go`
-- [ ] Add annotations to `jfrogHandler` in `pkg/http/jfrog_webhook_trigger.go`
-- [ ] Add annotations to `quayHandler` in `pkg/http/quay_webhook_trigger.go`
-- [ ] Add annotations to `azureHandler` in `pkg/http/azure_webhook_trigger.go`
-- [ ] Add annotations to `githubHandler` in `pkg/http/github_webhook_trigger.go`
-- [ ] Add annotations to `harborHandler` in `pkg/http/harbor_webhook_trigger.go`
-- [ ] Add annotations to `registryNotificationHandler` in `pkg/http/registry_notifications.go`
+- [x] Add annotations to `nativeHandler` in `pkg/http/native_webhook_trigger.go`
+- [x] Add annotations to `dockerHubHandler` in `pkg/http/dockerhub_webhook_trigger.go`
+- [x] Add annotations to `jfrogHandler` in `pkg/http/jfrog_webhook_trigger.go`
+- [x] Add annotations to `quayHandler` in `pkg/http/quay_webhook_trigger.go`
+- [x] Add annotations to `azureHandler` in `pkg/http/azure_webhook_trigger.go`
+- [x] Add annotations to `githubHandler` in `pkg/http/github_webhook_trigger.go`
+- [x] Add annotations to `harborHandler` in `pkg/http/harbor_webhook_trigger.go`
+- [x] Add annotations to `registryNotificationHandler` in `pkg/http/registry_notifications.go`
 
 ## Verification
 
-- [ ] Run `make update_openapi` and verify docs are generated
+- [~] Run `make update_openapi` and verify docs are generated
 - [ ] Verify generated `docs/swagger.json` contains all endpoints
 - [ ] Add `docs/` to `.gitignore` or commit generated files (team decision)
