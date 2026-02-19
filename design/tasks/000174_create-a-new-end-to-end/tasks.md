@@ -27,7 +27,7 @@
 
 ## GitHub Actions Workflow
 
-- [~] Create `.github/workflows/e2e.yml` with:
+- [x] Create `.github/workflows/e2e.yml` with:
   - Triggers: push to master, pull_request to master, workflow_dispatch
   - Job on `ubuntu-latest`
   - Step: Checkout code
@@ -44,5 +44,5 @@
 
 ## Testing
 
-- [ ] Test workflow locally using `act` or manual kind cluster setup
-- [ ] Verify end-to-end flow: cluster up → keel deployed → test deployment updated → cleanup
+- [x] Test workflow locally using `act` or manual kind cluster setup
+- [x] Verify end-to-end flow: cluster up → keel deployed → test deployment updated → cleanup
