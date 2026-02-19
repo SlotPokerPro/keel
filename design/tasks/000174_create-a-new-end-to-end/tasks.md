@@ -11,7 +11,7 @@
 
 ## Test Workload Manifest
 
-- [~] Create `tests/e2e/manifests/test-deployment.yaml` with a deployment that has:
+- [x] Create `tests/e2e/manifests/test-deployment.yaml` with a deployment that has:
   - Label `keel.sh/policy: major`
   - Label `keel.sh/trigger: poll`
   - Annotation `keel.sh/pollSchedule: @every 5s`
@@ -19,7 +19,7 @@
 
 ## Verification Script
 
-- [ ] Create `tests/e2e/verify.sh` script that:
+- [~] Create `tests/e2e/verify.sh` script that:
   - Waits for keel pod to be ready
   - Waits up to 120 seconds for test deployment image to update
   - Verifies image changed from `0.1.0` to `0.10.0`
