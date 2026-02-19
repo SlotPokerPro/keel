@@ -2,7 +2,7 @@
 
 ## Setup
 
-- [ ] Create directory `tests/e2e/manifests/` for e2e test manifests
+- [~] Create directory `tests/e2e/manifests/` for e2e test manifests
 
 ## Keel Deployment Manifests
 
