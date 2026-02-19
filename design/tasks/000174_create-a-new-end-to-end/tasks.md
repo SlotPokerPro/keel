@@ -7,11 +7,11 @@
 ## Keel Deployment Manifests
 
 - [x] Create `tests/e2e/manifests/keel-rbac.yaml` with ServiceAccount, ClusterRole, and ClusterRoleBinding for keel
-- [~] Create `tests/e2e/manifests/keel-deployment.yaml` with keel Deployment configured for polling (`POLL=1`, `POLL_DEFAULTSCHEDULE=@every 5s`)
+- [x] Create `tests/e2e/manifests/keel-deployment.yaml` with keel Deployment configured for polling (`POLL=1`, `POLL_DEFAULTSCHEDULE=@every 5s`)
 
 ## Test Workload Manifest
 
-- [ ] Create `tests/e2e/manifests/test-deployment.yaml` with a deployment that has:
+- [~] Create `tests/e2e/manifests/test-deployment.yaml` with a deployment that has:
   - Label `keel.sh/policy: major`
   - Label `keel.sh/trigger: poll`
   - Annotation `keel.sh/pollSchedule: @every 5s`
