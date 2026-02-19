@@ -19,7 +19,7 @@
 
 ## Verification Script
 
-- [~] Create `tests/e2e/verify.sh` script that:
+- [x] Create `tests/e2e/verify.sh` script that:
   - Waits for keel pod to be ready
   - Waits up to 120 seconds for test deployment image to update
   - Verifies image changed from `0.1.0` to `0.10.0`
@@ -27,7 +27,7 @@
 
 ## GitHub Actions Workflow
 
-- [ ] Create `.github/workflows/e2e.yml` with:
+- [~] Create `.github/workflows/e2e.yml` with:
   - Triggers: push to master, pull_request to master, workflow_dispatch
   - Job on `ubuntu-latest`
   - Step: Checkout code
