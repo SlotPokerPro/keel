@@ -2,11 +2,11 @@
 
 ## Setup
 
-- [~] Create directory `tests/e2e/manifests/` for e2e test manifests
+- [x] Create directory `tests/e2e/manifests/` for e2e test manifests
 
 ## Keel Deployment Manifests
 
-- [ ] Create `tests/e2e/manifests/keel-rbac.yaml` with ServiceAccount, ClusterRole, and ClusterRoleBinding for keel
+- [~] Create `tests/e2e/manifests/keel-rbac.yaml` with ServiceAccount, ClusterRole, and ClusterRoleBinding for keel
 - [ ] Create `tests/e2e/manifests/keel-deployment.yaml` with keel Deployment configured for polling (`POLL=1`, `POLL_DEFAULTSCHEDULE=@every 5s`)
 
 ## Test Workload Manifest
