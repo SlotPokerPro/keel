@@ -118,3 +118,41 @@ Simple bash script that:
 3. **Poll schedule**: Use short intervals (5s) for fast test feedback
 4. **Timeout handling**: kind cluster creation can take 1-2 minutes
 5. **RBAC**: Keel needs permissions to list/update deployments across namespaces
+
+## Implementation Notes
+
+### Files Created
+
+| File | Purpose |
+|------|---------|
+| `.github/workflows/e2e.yml` | GitHub Actions workflow orchestrating the e2e test |
+| `tests/e2e/manifests/keel-rbac.yaml` | Namespace, ServiceAccount, ClusterRole, ClusterRoleBinding |
+| `tests/e2e/manifests/keel-deployment.yaml` | Keel deployment with polling enabled |
+| `tests/e2e/manifests/test-deployment.yaml` | Test namespace + deployment with keel annotations |
+| `tests/e2e/verify.sh` | Bash script that waits and verifies the update |
+
+### Key Implementation Decisions
+
+1. **Used `imagePullPolicy: Never`** for keel deployment since image is loaded directly into kind
+2. **Separate namespace for keel (`keel`) and test workload (`e2e-test`)** to test cross-namespace functionality
+3. **Poll schedule `@every 5s`** for both keel default and test deployment annotation for fast feedback
+4. **120s timeout** for verification - gives enough time for polling + registry check + update
+5. **RBAC copied from chart/keel/values.yaml** to ensure compatibility with production setup
+
+### Test Image Details
+
+- Image: `keelhq/push-workflow-example`
+- Initial version: `0.1.0`
+- Expected updated version: `0.10.0`
+- This is a public DockerHub image with predictable semver tags
+
+### Workflow Steps
+
+1. Checkout → Setup Go → Setup Docker Buildx
+2. Create kind cluster using `scripts/start-local-cluster.sh`
+3. Build keel image locally (`keel:e2e`)
+4. Load image into kind cluster
+5. Apply RBAC, then keel deployment, wait for rollout
+6. Apply test deployment, wait for rollout
+7. Run `verify.sh` which polls for image update
+8. Cleanup kind cluster (runs always, even on failure)
