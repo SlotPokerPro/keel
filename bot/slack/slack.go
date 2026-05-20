@@ -138,7 +138,11 @@ func (b *Bot) findChannelId(channelName string) (string, error) {
 
 	// -- while the channel is not found, fetch pages
 	for channelId == "" {
-		channels, nextCursor, err := b.slackSocket.GetConversationsForUser(&slack.GetConversationsForUserParameters{ExcludeArchived: true, Cursor: cursor})
+		channels, nextCursor, err := b.slackSocket.GetConversationsForUser(&slack.GetConversationsForUserParameters{
+			ExcludeArchived: true,
+			Cursor:          cursor,
+			Types: []string{"public_channel", "private_channel"},
+		})
 		if err != nil {
 			return "", err
 		}
